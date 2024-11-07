@@ -1,0 +1,1104 @@
+:root {
+    --dark-purple: #6d3154;
+    --light-purple: #a94e83;
+    --light-brown: #7c603f;
+    --dark-brown: #433321;
+
+    --tan: #efe4d6;
+    --tan2: #dec8ad;
+}
+
+
+button {
+    font-family: 'Alice', serif;
+}
+
+/****************
+ * Main Menu UI *
+ ****************/
+
+#main-menu-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    cursor: default;
+}
+
+#main-menu-display {
+    display: flex;
+    width: 50%;
+    min-width: 320px;
+    height: 100vh;
+    min-height: 560px;
+    background-color: rgba(64, 64, 64, 0.6);
+    background: linear-gradient(to right, rgba(64, 64, 64, 0.6), 60%, rgba(64, 64, 64, 0.6), 90%, rgba(0, 0, 0, 0));
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#main-menu-header-container {
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 16px;
+}
+
+#main-menu-title {
+    font-weight: normal;
+    font-size: 72px;
+    padding: 0;
+    margin: 0;
+}
+
+#main-menu-subtitle {
+    font-weight: normal;
+    font-size: 36px;
+    padding: 0;
+    margin: 0;
+}
+
+#main-menu-button-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 16px;
+}
+
+#main-menu-button-list .button-inner-container {
+    margin: 8px;
+    padding: 4px;
+    border-radius: 32px;
+    background-color: transparent;
+}
+
+#main-menu-button-list button {
+    width: 100%;
+    font-size: 24px;
+    border: none;
+    color: white;
+    padding: 8px;
+    background-color: transparent;
+}
+
+
+#main-menu-button-list button:hover {
+    cursor: pointer;
+    color: var(--light-purple);
+}
+
+#main-menu-button-list .button-inner-container.primary {
+    width: 60%;
+    margin: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 4px;
+    border-radius: 32px;
+    background-color: var(--light-purple);
+}
+
+#main-menu-button-list button.primary {
+    font-size: 24px;
+    border: 4px solid var(--dark-purple);
+    color: white;
+    padding: 8px;
+    border-radius: 32px;
+    background-color: var(--light-purple);
+}
+
+
+#main-menu-button-list button.primary:hover {
+    cursor: pointer;
+    border-color: white;
+}
+
+
+#main-menu-button-list .button-inner-container:first-child {
+    height: 120px;
+    border-radius: 60px;
+}
+
+#main-menu-button-list .button-inner-container:first-child button {
+    border-radius: 60px;
+    font-size: 48px;
+    height: 100%;
+}
+
+/**************
+ * Options UI *
+ **************/
+#options-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    cursor: default;
+}
+
+
+#options-panel {
+    display: flex;
+    width: 50%;
+    min-width: 320px;
+    height: 100vh;
+    min-height: 560px;
+    background-color: rgba(64, 64, 64, 0.6);
+    background: linear-gradient(to right, rgba(64, 64, 64, 0.6), 60%, rgba(64, 64, 64, 0.6), 90%, rgba(0, 0, 0, 0));
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    translate: -1024px 0;
+}
+
+#options-back-button {
+    color: white;
+    font-size: 72px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: 16px;
+}
+
+#options-back-button:hover {
+    cursor: pointer;
+}
+
+#options-header-container {
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 16px;
+}
+
+#options-list-container {
+    color: white;
+    flex-grow: 1;
+}
+
+.option-container {
+    padding: 16px;
+    margin: 8px;
+}
+
+/**************
+ * Credits UI *
+ **************/
+#credits-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    cursor: default;
+}
+
+
+#credits-panel {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(64, 64, 64, 0.6);
+    background: linear-gradient(to right, rgba(64, 64, 64, 0.6), 60%, rgba(64, 64, 64, 0.6), 90%, rgba(0, 0, 0, 0));
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    translate: -1024px 0;
+    position: relative;
+}
+
+#credits-back-button {
+    color: white;
+    font-size: 72px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: 16px;
+}
+
+#credits-back-button:hover {
+    cursor: pointer;
+}
+
+#credits-text {
+    width: 512px;
+    text-align: center;
+    color: white;
+    overflow-y: auto;
+    height: 100%;
+    padding: 32px;
+}
+
+.credits-section {
+    padding: 32px;
+}
+
+.credits-section h3 {
+    margin: 0;
+}
+
+.credits-section p {
+    margin: 0;
+}
+
+.credits-section a {
+    color: white;
+    text-decoration: none;
+}
+
+.credits-section a:hover {
+    text-decoration: underline;
+}
+
+/**************
+ * Navigation *
+ **************/
+
+#room-navigation {
+    display: none;
+}
+
+#next {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    fill: #ffffff;
+    text-shadow: 2px 2px 5px black;
+}
+
+#next:hover {
+    fill: var(--light-purple);
+    cursor: pointer;
+}
+
+#prev {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    fill: #ffffff;
+    text-shadow: 2px 2px 5px black;
+}
+
+#prev:hover {
+    fill: var(--light-purple);
+    cursor: pointer;
+}
+
+
+/******************
+ * Game Status UI *
+ ******************/
+#game-status-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    color: #7E674F;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    transition: opacity 2s;
+}
+
+#game-status-container:hover {
+    /* opacity: 0.3; */
+}
+
+#game-status-panel {
+    width: 280px;
+    height: 100px;
+    background-color: var(--light-brown);
+    border-radius: 16px;
+    margin: 8px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#currency-meter-container {
+    width: 256px;
+    background-color: var(--tan);
+    border-radius: 8px;
+    display: flex;
+    justify-content: start;
+    gap: 8px;
+    padding: 12px;
+}
+
+#currency-meter-container .meter-start,
+.meter-end {
+    color: #7E674F;
+}
+
+#currency-meter-icon {
+    /* padding: 12px; */
+}
+
+#currency-progress {
+    width: 170px;
+    height: 10px;
+    border-radius: 8px;
+    background-color: #dcd4ca;
+    position: relative;
+    display: inline-block;
+    flex-grow: 1;
+    margin: 6px;
+}
+
+#currency-meter-container:hover #currency-amount {
+    opacity: 1;
+}
+
+#currency-progress-amount {
+    width: 50%;
+    height: 10px;
+    border-radius: 8px;
+    background-color: #ebac51;
+}
+
+#currency-amount {
+    display: block;
+    opacity: 0;
+    text-align: right;
+    line-height: 8px;
+    margin-right: 8px;
+    transition: 0.3s opacity;
+}
+
+#current-day-container {
+    width: 100%;
+    height: 46px;
+    background-color: var(--tan);
+    border-radius: 8px;
+    display: flex;
+    gap: 0;
+}
+
+#current-day-icon {
+    padding: 12px 12px 12px 12px;
+}
+
+#current-day-icon img {
+    width: 100%;
+}
+
+#current-day-text {
+    flex-grow: 2;
+    padding: 12px 12px 12px 0;
+}
+
+
+
+/***********
+ * Brew UI *
+ ***********/
+
+#brew-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: none;
+    width: 100%;
+    height: 100vh;
+}
+
+#brew-right-side {
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    position: fixed;
+    right: 0;
+    width: 512px;
+    translate: 1024px 0;
+    min-width: 460px;
+    background-color: var(--tan);
+    margin: 30px;
+    border-radius: 8px;
+    border: 8px solid var(--light-brown);
+    box-shadow: 0 8px var(--dark-brown);
+}
+
+#brew-header-container {
+    background-color: var(--light-brown);
+    box-shadow: 0 8px var(--dark-brown);
+}
+
+#brew-header-container h1 {
+    color: white;
+    text-align: center;
+    margin: 16px;
+}
+
+#brew-ingredients-container {
+    height: 110px;
+    margin: 15px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: nowrap;
+
+}
+
+.ingredient-container {
+    border: 4px dashed var(--tan2);
+    flex-grow: 1;
+    border-radius: 8px;
+    padding: 4px;
+    position: relative;
+}
+
+.ingredient-container img {
+    width: 100%;
+    height: 100%;
+}
+
+.ingredient-container .ingredient-inventory-brew-count {
+    position: absolute;
+    border-radius: 50%;
+    color: white;
+    text-align: right;
+    line-height: 24px;
+    right: 0;
+    bottom: 0;
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+    padding: 8px 12px;
+}
+
+.ingredient-container:hover {
+    border: 4px dashed var(--light-brown);
+    cursor: pointer;
+}
+
+#brew-selected-container {
+    height: 220px;
+    margin: 0 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ingredient-selected-container {
+    border: 4px dashed var(--tan2);
+    flex-grow: 1;
+    border-radius: 8px;
+    padding: 4px;
+    max-height: 80px;
+}
+
+.ingredient-selected-container.disabled {
+    border: 4px dashed #adadad;
+    cursor: pointer;
+}
+
+.ingredient-selected-container .disabled-selected-ingredient {
+    text-align: center;
+    vertical-align: middle;
+    color: gray;
+}
+
+.ingredient-selected-container .active-selected-ingredient {
+    display: none;
+
+}
+
+.ingredient-selected-container .active-selected-ingredient .selected-ingredient-image {
+    border: 4px dashed var(--tan2);
+    border-radius: 40px;
+    margin: 4px;
+    width: 60px;
+    height: 60px;
+    padding: 4px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.ingredient-selected-container .active-selected-ingredient .selected-ingredient-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+}
+
+.ingredient-selected-container .active-selected-ingredient .selected-ingredient-description {
+    margin: 12px;
+}
+
+.ingredient-selected-container .active-selected-ingredient .selected-ingredient-description h2 {
+    margin: 0;
+    padding: 0;
+}
+
+.ingredient-selected-container .active-selected-ingredient .selected-ingredient-description p {
+    margin: 0;
+    padding: 0;
+}
+
+.ingredient-selected-container:hover {
+    border: 4px dashed var(--light-brown);
+    cursor: pointer;
+}
+
+.ingredient-selected-container.disabled:hover {
+    border: 4px dashed #adadad;
+    cursor: auto;
+}
+
+#brew-potion-summary-container {
+    height: 110px;
+    margin: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+#potion-icon-container {
+    border: 4px dashed var(--tan2);
+    border-radius: 50px;
+    margin: 15px;
+    width: 80px;
+    height: 80px;
+    padding: 4px;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+}
+
+#potion-icon {
+    display: block;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    background-color: #15122f;
+}
+
+#potion-icon img {
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+}
+
+#potion-icon-container .potion-inventory-count {
+    position: absolute;
+    border-radius: 50%;
+    color: white;
+    text-align: right;
+    line-height: 24px;
+    right: 0;
+    bottom: 0;
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+    padding: 8px 12px;
+}
+
+#potion-description {
+    margin-left: 0;
+}
+
+#potion-description h2 {
+    margin: 0px;
+}
+
+#potion-properties-list {
+    margin: 16px;
+    padding: 0;
+}
+
+ul#potion-properties-list li {
+    list-style: none;
+}
+
+#brew-button-container {
+    height: 50px;
+}
+
+#brew-button-inner-container {
+    position: fixed;
+    right: 70px;
+    padding: 2px;
+    margin-top: 25px;
+    border-radius: 32px;
+    width: 180px;
+    background-color: var(--light-purple);
+}
+
+#brew-button-container button {
+    font-size: 24px;
+    border: 4px solid var(--dark-purple);
+    color: white;
+    padding: 8px;
+    border-radius: 32px;
+    width: 180px;
+    background-color: var(--light-purple);
+}
+
+#brew-button-container button:hover {
+    cursor: pointer;
+    border-color: white;
+}
+
+/***********
+ * Shop UI *
+ ***********/
+
+#shop-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: none;
+    width: 100%;
+    height: 100vh;
+}
+
+#shop-panel {
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    position: fixed;
+    right: 0;
+    translate: 1024px 0;
+    background-color: var(--tan);
+    margin: 30px;
+    border-radius: 8px;
+    border: 8px solid var(--light-brown);
+    box-shadow: 0 8px var(--dark-brown);
+}
+
+#shop-sides {
+    display: flex;
+    flex-direction: row;
+}
+
+#shop-header-container {
+    background-color: var(--light-brown);
+    box-shadow: 0 8px var(--dark-brown);
+}
+
+#shop-header-container h1 {
+    color: white;
+    text-align: center;
+    margin: 8px;
+}
+
+#shop-left-side {
+    width: 330px;
+    padding: 16px;
+}
+
+#shop-potions-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 8px;
+    gap: 8px;
+}
+
+.potion-container {
+    position: relative;
+    border: 4px dashed var(--tan2);
+    border-radius: 16px;
+    padding: 4px;
+    width: 80px;
+}
+
+.potion-container:hover {
+    border: 4px dashed var(--light-brown);
+    cursor: pointer;
+}
+
+.potion-container img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.potion-container .potion-inventory-count {
+    position: absolute;
+    border-radius: 50%;
+    color: white;
+    text-align: right;
+    line-height: 24px;
+    right: 0;
+    bottom: 0;
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+    padding: 8px 12px;
+}
+
+#shop-right-side {
+    padding: 16px;
+}
+
+#shop-shelves-container {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    gap: 24px;
+}
+
+.shop-shelf {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    border-bottom: 16px solid #8c5a4f;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+}
+
+.stocked-potion-container {
+    border: 4px dashed var(--tan2);
+    border-radius: 16px;
+    padding: 4px;
+    width: 80px;
+    height: 80px;
+}
+
+.stocked-potion-container:hover {
+    border: 4px dashed var(--light-brown);
+    cursor: pointer;
+}
+
+
+.stocked-potion-container img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.disabled-stocked-potion {
+    border: 4px dashed #adadad;
+    cursor: auto;
+}
+
+.disabled-stocked-potion:hover {
+    border: 4px dashed #adadad;
+    cursor: auto;
+}
+
+#shop-button-container {
+    position: relative;
+}
+
+#shop-button-inner-container {
+    position: absolute;
+    padding: 2px;
+    margin-top: -25px;
+    border-radius: 32px;
+    width: 180px;
+    right: 25px;
+    background-color: var(--light-purple);
+}
+
+#shop-button-container button {
+    font-size: 24px;
+    border: 4px solid var(--dark-purple);
+    color: white;
+    padding: 8px;
+    border-radius: 32px;
+    width: 180px;
+    background-color: var(--light-purple);
+}
+
+#shop-button-container button:hover {
+    cursor: pointer;
+    border-color: white;
+}
+
+
+/*************
+ * Market UI *
+ *************/
+#market-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: none;
+    width: 100%;
+    height: 100vh;
+}
+
+#market-panel {
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    position: fixed;
+    right: 0;
+    translate: 1024px 0;
+    background-color: var(--tan);
+    margin: 30px;
+    border-radius: 8px;
+    border: 8px solid var(--light-brown);
+    box-shadow: 0 8px var(--dark-brown);
+}
+
+#market-header-container {
+    background-color: var(--light-brown);
+    box-shadow: 0 8px var(--dark-brown);
+}
+
+#market-header-container h1 {
+    color: white;
+    text-align: center;
+    margin: 16px;
+}
+
+#ingredients-list {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.ingredient-sell-container {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    padding: 16px;
+}
+
+.ingredient-icon-container {
+    border: 4px dashed var(--tan2);
+    border-radius: 50px;
+    width: 90px;
+    height: 90px;
+    padding: 4px;
+    position: relative;
+}
+
+.ingredient-icon-container {
+    position: relative;
+    border: 4px dashed var(--tan2);
+    border-radius: 16px;
+    padding: 4px;
+}
+
+.ingredient-icon-container:hover {
+    border: 4px dashed var(--light-brown);
+    cursor: pointer;
+}
+
+.ingredient-icon-container img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.ingredient-icon-container .ingredient-inventory-count {
+    position: absolute;
+    border-radius: 50%;
+    color: white;
+    text-align: right;
+    line-height: 24px;
+    right: 0;
+    bottom: 0;
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+    padding: 8px 12px;
+}
+
+.ingredient-purchase-controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 16px;
+}
+
+.ingredient-in-cart-amount {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    margin: 0;
+    border: 4px solid var(--tan2);
+    border-radius: 4px;
+    text-align: center;
+    background-color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--light-brown);
+}
+
+.ingredient-in-cart-amount:focus {
+    outline: none;
+}
+
+input.ingredient-in-cart-amount::-webkit-outer-spin-button,
+input.ingredient-in-cart-amount::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number].ingredient-in-cart-amount {
+    -moz-appearance: textfield;
+}
+
+.add-ingredient-button {
+    border: none;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--light-brown);
+    background-color: transparent;
+
+    padding: 8px;
+}
+
+.add-ingredient-button:hover {
+    cursor: pointer;
+}
+
+.remove-ingredient-button {
+    border: none;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--light-brown);
+    background-color: transparent;
+    padding: 8px;
+}
+
+.remove-ingredient-button:hover {
+    cursor: pointer;
+}
+
+#total-container {
+    border-top: 1px dotted gray;
+    padding: 16px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+#total-container-inner {
+    margin-left: 240px;
+}
+
+#total-icon-container {
+    margin-top: 8px;
+    padding: 8px;
+}
+
+#total-title {
+    font-size: 24px;
+}
+
+#total-amount {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+#total-amount-value {
+    font-size: 42px;
+    text-align: right;
+}
+
+#market-button-container {
+    position: relative;
+}
+
+#market-button-inner-container {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    padding: 2px;
+    margin-top: -25px;
+    border-radius: 32px;
+    width: 180px;
+    background-color: var(--light-purple);
+}
+
+#market-button-container button {
+    font-size: 24px;
+    border: 4px solid var(--dark-purple);
+    color: white;
+    padding: 8px;
+    border-radius: 32px;
+    width: 180px;
+    background-color: var(--light-purple);
+}
+
+#market-button-container button:hover {
+    cursor: pointer;
+    border-color: white;
+}
+
+
+
+/****************
+ * Game Over UI *
+ ****************/
+
+#game-over-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 100%;
+    height: 100vh;
+}
+
+#game-over-blackout {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-over-panel {
+    width: 600px;
+    height: 400px;
+    text-align: center;
+    padding: 32px;
+    color: white;
+}
+
+#play-again-button-container {
+    width: 184px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#play-again-button-inner-container {
+    padding: 2px;
+    border-radius: 32px;
+    width: 180px;
+    background-color: var(--light-purple);
+}
+
+#play-again-button-container button {
+    font-size: 24px;
+    border: 4px solid var(--dark-purple);
+    color: white;
+    padding: 8px;
+    border-radius: 32px;
+    width: 180px;
+    background-color: var(--light-purple);
+}
+
+#play-again-button-container button:hover {
+    cursor: pointer;
+    border-color: white;
+}
