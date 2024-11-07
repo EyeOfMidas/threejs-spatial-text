@@ -21,11 +21,14 @@ game.scene = new THREE.Scene()
 game.mousePosition = new THREE.Vector2(0, 0)
 game.keyboard = {}
 game.lookAtFocus = new THREE.Vector3(0, 0, 0)
-// game.gui = new GUI()
+game.gui = new GUI()
 
 
 
 function loaded() {
+    if(game.scene) {
+        game.scene.clear()
+    }
     game.renderer = new THREE.WebGLRenderer({
         canvas: game.canvas,
         antialias: true,

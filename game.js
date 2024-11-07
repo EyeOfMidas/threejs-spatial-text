@@ -14,17 +14,17 @@ export async function init(inGame) {
     game.camera.position.z = 5
 
 
-    // debug = {
-    //     font1: "Alice",
-    //     fontSize1: 86,
-    //     fontAlign1: "center",
-    //     font2: "Quicksand",
-    //     fontSize2: 32,
-    //     fontAlign2: "left",
-    //     font3: "Shadows Into Light",
-    //     fontSize3: 120,
-    //     fontAlign3: "center",
-    // }
+    debug = {
+        font1: "Alice",
+        fontSize1: 86,
+        fontAlign1: "center",
+        font2: "Quicksand",
+        fontSize2: 32,
+        fontAlign2: "left",
+        font3: "Shadows Into Light",
+        fontSize3: 120,
+        fontAlign3: "center",
+    }
 
     spatialText1 = buildCanvasText("Demo Text Goes Here", { font: `86px Alice` })
     spatialText1.position.z = 0

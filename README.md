@@ -55,6 +55,4 @@ This currently is done really cheaply; each text string is a separate two textur
 The correct approach here is to make a font texture and then build up a sentence using UV mapping instead. Definitely a future goal of mine, but for now this implementation is good enough.
 
 ## lil-gui Issues
-For some bizarre reason, adding a lil-gui to this project (anywhere! Just `new GUI()` and you'll see it!) causes the canvas textures to duplicate.
-
-I'm still trying to figure this out too; any suggestions or PRs are welcome.
+Adding a lil-gui to the scene causes the dom content to re-load again. I set the `loaded()` function in `main.js` to clear out the scene when it's called but it would be nice to not have to do this. There might be some remnants of the previous call left behind...
