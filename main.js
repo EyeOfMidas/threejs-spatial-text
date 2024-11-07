@@ -6,9 +6,9 @@ import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPa
 import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js'
 import { OutlinePass } from 'three/examples/jsm/postprocessing/OutlinePass.js'
 import { init, update, onClick, onKeyPress } from './game.js'
-import GUI from 'lil-gui'
 
 const game = {}
+game.loaded = false
 game.entities = []
 game.loadingManager = new THREE.LoadingManager()
 game.gltfLoader = new GLTFLoader(game.loadingManager)
@@ -21,9 +21,6 @@ game.scene = new THREE.Scene()
 game.mousePosition = new THREE.Vector2(0, 0)
 game.keyboard = {}
 game.lookAtFocus = new THREE.Vector3(0, 0, 0)
-game.gui = new GUI()
-
-
 
 function loaded() {
     if(game.scene) {
@@ -73,6 +70,8 @@ function loaded() {
     game.orbitControls = new OrbitControls(game.camera, game.renderer.domElement)
     game.orbitControls.enabled = false
     onResize()
+
+    console.log("calling init")
     init(game).then(() => {
         document.getElementById("loading").style.display = "none"
         game.clock.start()
@@ -105,20 +104,24 @@ function attachAnimationFrame() {
     window.requestAnimationFrame(attachAnimationFrame)
 }
 
-let isFontLoaded = false
 let isDomLoaded = false
+let expectedFonts = new Set()
+let loadedFonts = []
 
 export default async function main(canvasElement) {
     game.canvas = canvasElement
 
     document.fonts.addEventListener("loadingdone", (event) => {
-        isFontLoaded = true
-        if(isDomLoaded && isFontLoaded) {
+        loadedFonts.push(...event.fontfaces.map(font => font.family))
+        if(isDomLoaded && expectedFonts.size == loadedFonts.length) {
             loaded()
         }
     })
 
     document.fonts.ready.then((fontFaceSet) => {
+        let expectedFontsArray = [...fontFaceSet].map(set => set.family)
+        expectedFonts = new Set(expectedFontsArray);
+
         [...fontFaceSet].map(set => `1em ${set.family}`).map(fontFamily => {
             document.fonts.load(fontFamily)
         })
@@ -126,7 +129,7 @@ export default async function main(canvasElement) {
 
     document.addEventListener("DOMContentLoaded", (event) => {
           isDomLoaded = true
-          if(isDomLoaded && isFontLoaded) {
+          if(isDomLoaded && expectedFonts.size != 0 && expectedFonts.length == loadedFonts.length) {
             loaded()
         }
     })

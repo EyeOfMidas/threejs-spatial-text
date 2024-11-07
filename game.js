@@ -1,8 +1,62 @@
 import * as THREE from 'three'
 import { buildCanvasText } from './canvastext.js'
+import GUI from 'lil-gui'
+
 let game, spatialText1, spatialText2, spatialText3, floor, ambientLight, directionalLight, debug
 
 const raycast = new THREE.Raycaster()
+const gui = new GUI()
+
+function updateSpatialText1() {
+    if(spatialText1) {
+        game.scene.remove(spatialText1)
+        spatialText1.material.dispose()
+    }
+    
+    spatialText1 = buildCanvasText(debug.fontText1, { font: `${debug.fontSize1}px ${debug.font1}`, textAlign: debug.fontAlign1 })
+    spatialText1.position.z = 0
+    spatialText1.position.y = 0.5
+    spatialText1.rotateOnAxis(new THREE.Vector3(1, 0, 0), -Math.PI / 2)
+    spatialText1.material.opacity = 1
+    spatialText1.castShadow = true
+    game.scene.add(spatialText1)
+}
+
+function updateSpatialText2() {
+    if(spatialText2) {
+        game.scene.remove(spatialText2)
+        spatialText2.material.dispose()
+    }
+
+    
+    
+    spatialText2 = buildCanvasText(debug.fontText2, { font: `${debug.fontSize2}px ${debug.font2}`, textAlign: debug.fontAlign2 })
+    spatialText2.position.x = -1
+    spatialText2.position.y = 0.5
+    spatialText2.position.z = -3
+    spatialText2.material.opacity = 1
+    spatialText2.castShadow = true
+    
+    game.scene.add(spatialText2)
+}
+
+function updateSpatialText3() {
+    if(spatialText3) {
+        game.scene.remove(spatialText3)
+        spatialText3.material.dispose()
+    }
+    
+    spatialText3 = buildCanvasText(debug.fontText3, { font: `${debug.fontSize3}px ${debug.font3}`, textAlign: debug.fontAlign3 })
+    spatialText3.position.x = 2
+    spatialText3.position.y = 1.5
+    spatialText3.position.z = 3
+    spatialText3.rotateOnAxis(new THREE.Vector3(0, 1, 0), -Math.PI / 2)
+    spatialText3.material.opacity = 1
+    spatialText3.castShadow = true
+    game.scene.add(spatialText3)
+}
+
+const possibleFonts = ["Alice", "Quicksand", "Shadows Into Light", "League Script", "Arial", "Courier New", "Times New Roman", "Brush Script MT"]
 
 export async function init(inGame) {
     
@@ -13,48 +67,81 @@ export async function init(inGame) {
     game.camera.position.y = 5
     game.camera.position.z = 5
 
-
     debug = {
         font1: "Alice",
         fontSize1: 86,
         fontAlign1: "center",
+        fontText1: "Demo Text Goes Here",
         font2: "Quicksand",
         fontSize2: 32,
         fontAlign2: "left",
+        fontText2: "This is a large block of text that will automatically wrap when it hits the boundaries of the texture. This is useful if you want to do extensive text or if you want to have dialog boxes in the world.",
         font3: "Shadows Into Light",
         fontSize3: 120,
         fontAlign3: "center",
+        fontText3: `Demo
+        Text`
     }
 
-    spatialText1 = buildCanvasText("Demo Text Goes Here", { font: `86px Alice` })
-    spatialText1.position.z = 0
-    spatialText1.position.y = 0.5
-    spatialText1.rotateOnAxis(new THREE.Vector3(1, 0, 0), -Math.PI / 2)
-    spatialText1.material.opacity = 1
-    spatialText1.castShadow = true
-    game.scene.add(spatialText1)
+    gui.reset()
 
-    spatialText2 = buildCanvasText(
-        "This is a large block of text that will automatically wrap when it hits the boundaries of the texture. This is useful if you want to do extensive text or if you want to have dialog boxes in the world.",
-        { font: "32px Quicksand", textAlign: "left" })
-    spatialText2.position.x = -1
-    spatialText2.position.y = 0.5
-    spatialText2.position.z = -3
-    spatialText2.material.opacity = 1
-    spatialText2.castShadow = true
-    
-    game.scene.add(spatialText2)
+    const spatialText1Folder = gui.addFolder('Spatial Text 1')
+    spatialText1Folder.close()
+    spatialText1Folder.add(debug, 'font1', possibleFonts).name("Font Family").onChange(value => {
+        updateSpatialText1()
+    })
 
+    spatialText1Folder.add(debug, 'fontSize1').min(8).max(200).step(1).name("Size").onChange(value => {
+        updateSpatialText1()
+    })
 
-    spatialText3 = buildCanvasText(`Demo
-        Text`, { font: `120px "Shadows Into Light"` })
-    spatialText3.position.x = 2
-    spatialText3.position.y = 1.5
-    spatialText3.position.z = 3
-    spatialText3.rotateOnAxis(new THREE.Vector3(0, 1, 0), -Math.PI / 2)
-    spatialText3.material.opacity = 1
-    spatialText3.castShadow = true
-    game.scene.add(spatialText3)
+    spatialText1Folder.add(debug, 'fontAlign1', ["left", "center", "right"]).name("Align").onChange(value => {
+        updateSpatialText1()
+    })
+
+    spatialText1Folder.add(debug, 'fontText1').name("Text").onChange(value => {
+        updateSpatialText1()
+    })
+
+    const spatialText2Folder = gui.addFolder('Spatial Text 2')
+    spatialText2Folder.close()
+    spatialText2Folder.add(debug, 'font2', possibleFonts).name("Font Family").onChange(value => {
+        updateSpatialText2()
+    })
+
+    spatialText2Folder.add(debug, 'fontSize2').min(8).max(200).step(1).name("Size").onChange(value => {
+        updateSpatialText2()
+    })
+
+    spatialText2Folder.add(debug, 'fontAlign2', ["left", "center", "right"]).name("Align").onChange(value => {
+        updateSpatialText2()
+    })
+
+    spatialText2Folder.add(debug, 'fontText2').name("Text").onChange(value => {
+        updateSpatialText2()
+    })
+
+    const spatialText3Folder = gui.addFolder('Spatial Text 3')
+    spatialText3Folder.close()
+    spatialText3Folder.add(debug, 'font3', possibleFonts).name("Font Family").onChange(value => {
+        updateSpatialText3()
+    })
+
+    spatialText3Folder.add(debug, 'fontSize3').min(8).max(200).step(1).name("Size").onChange(value => {
+        updateSpatialText3()
+    })
+
+    spatialText3Folder.add(debug, 'fontAlign3', ["left", "center", "right"]).name("Align").onChange(value => {
+        updateSpatialText3()
+    })
+
+    spatialText3Folder.add(debug, 'fontText3').name("Text").onChange(value => {
+        updateSpatialText3()
+    })
+
+    updateSpatialText1()
+    updateSpatialText2()
+    updateSpatialText3()
 
 
     let floorGeometry = new THREE.PlaneGeometry(10,10)
